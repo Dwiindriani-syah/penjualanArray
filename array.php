@@ -54,3 +54,11 @@ foreach ($nama_barang as $key => $barang) {
     $grandtotal += $subtotal;
     $no++;
 }
+
+// Output akhir
+echo "--------------------------------------------------\n";
+echo sprintf("%-30s Rp %s", "Total Penjualan :", number_format($grandtotal, 0, ',', '.'));
+echo "\n--------------------------------------------------\n";
+echo "Terima kasih telah berbelanja di JAYA MART 😊";
+echo "</pre>";
+?>
