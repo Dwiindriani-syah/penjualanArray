@@ -28,3 +28,29 @@ for ($i = 0; $i < $jumlah_produk; $i++) {
     $total[$i] = $harga_barang[$index_harga] * $jumlah_beli[$i];
     $grandtotal += $total[$i];
 }
+
+// Header transaksi
+echo "<pre style='font-family:Courier New; font-size:16px; margin:auto; width:35%;'>";
+echo "No  Nama Barang        Qty    Harga       Total";
+echo "\n--------------------------------------------------\n";
+
+// Menampilkan setiap item
+$no = 1;
+foreach ($nama_barang as $key => $barang) {
+    if ($key >= $jumlah_produk) break;
+
+    $qty = $jumlah_beli[$key];
+    $harga = $total[$key] / $qty;
+    $subtotal = $total[$key];
+
+    printf("%-3s %-18s %-6s Rp %-8s Rp %-8s\n",
+        $no,
+        $barang,
+        $qty,
+        number_format($harga, 0, ',', '.'),
+        number_format($subtotal, 0, ',', '.')
+    );
+
+    $grandtotal += $subtotal;
+    $no++;
+}
