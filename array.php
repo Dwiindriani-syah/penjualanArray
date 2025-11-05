@@ -55,7 +55,11 @@ if ($grandtotal >= 300000) {
 $jumlah_diskon = $grandtotal * $diskon;
 $total_bayar = $grandtotal - $jumlah_diskon;
 
-// Tampilkan total & diskon
+// Simulasi pembayaran pelanggan (commit ke-7)
+$pembayaran = rand($total_bayar, $total_bayar + 500000); // random uang pelanggan
+$kembalian = $pembayaran - $total_bayar;
+
+// Tampilkan total & diskon & pembayaran
 echo "----------------------------------------------------------------\n";
 printf("%-33s %26s\n", "Total Penjualan :", "Rp " . number_format($grandtotal, 0, ',', '.'));
 
@@ -65,6 +69,8 @@ if ($diskon > 0) {
 
 echo "----------------------------------------------------------------\n";
 printf("%-33s %26s\n", "Total Bayar :", "Rp " . number_format($total_bayar, 0, ',', '.'));
+printf("%-33s %26s\n", "Uang Pembeli :", "Rp " . number_format($pembayaran, 0, ',', '.'));
+printf("%-33s %26s\n", "Kembalian :", "Rp " . number_format($kembalian, 0, ',', '.'));
 echo "----------------------------------------------------------------\n";
 echo "</pre>";
 
