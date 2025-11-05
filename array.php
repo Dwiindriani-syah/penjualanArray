@@ -16,6 +16,7 @@ $jumlah_beli = [];
 $total = [];
 $grandtotal = 0;
 
+// Hitung total per barang dan grand total
 for ($i = 0; $i < $jumlah_produk; $i++) {
     $jumlah_beli[$i] = rand(1, 5);
     $total[$i] = $harga_barang[$i] * $jumlah_beli[$i];
@@ -42,9 +43,28 @@ for ($i = 0; $i < $jumlah_produk; $i++) {
     );
 }
 
-// Total akhir
+// Hitung diskon (commit ke-6)
+$diskon = 0;
+if ($grandtotal >= 300000) {
+    $diskon = 0.10; // 10%
+} elseif ($grandtotal >= 200000) {
+    $diskon = 0.05; // 5%
+}
+
+// Total setelah diskon
+$jumlah_diskon = $grandtotal * $diskon;
+$total_bayar = $grandtotal - $jumlah_diskon;
+
+// Tampilkan total & diskon
 echo "----------------------------------------------------------------\n";
 printf("%-33s %26s\n", "Total Penjualan :", "Rp " . number_format($grandtotal, 0, ',', '.'));
+
+if ($diskon > 0) {
+    printf("%-33s %26s\n", "Diskon (" . ($diskon * 100) . "%) :", "-Rp " . number_format($jumlah_diskon, 0, ',', '.'));
+}
+
+echo "----------------------------------------------------------------\n";
+printf("%-33s %26s\n", "Total Bayar :", "Rp " . number_format($total_bayar, 0, ',', '.'));
 echo "----------------------------------------------------------------\n";
 echo "</pre>";
 
